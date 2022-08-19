@@ -50,7 +50,16 @@ function checkValidString(s) {
 		}
 	}
 
-	return !left.length || left.length <= asterisk.length
+	while (left.length && asterisk.length) {
+		const leftIndex = left.pop()
+		const asteriskIndex = asterisk.pop()
+		if (leftIndex > asteriskIndex) {
+			return false
+		}
+	}
+
+	return !left.length
 }
 
-console.log(checkValidString('(******))))())'))
+// console.log(checkValidString('(******))))())'))
+console.log(checkValidString('(**((*'))
